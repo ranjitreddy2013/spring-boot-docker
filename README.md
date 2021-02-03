@@ -9,7 +9,7 @@ docker build -f src/main/docker/Dockerfile -t 0169...../ecs-example-repository:s
 docker build -f src/main/docker/Dockerfile -t 0169.....dkr.ecr.us-west-1.amazonaws.com/ecs-example-repository:spring-boot .
 docker build -f src/main/docker/Dockerfile -t 016973021151.dkr.ecr.us-west-1.amazonaws.com/ecs-example-repository:spring-boot .
   
-docker run -d -p 8080:8080 spring-boot 
+docker run -d -p 8080:8080 spring-boot   
 docker run -d -p 8080:8080 0169......dkr.ecr.us-west-1.amazonaws.com/ecs-example-repository:spring-boot
 
 
