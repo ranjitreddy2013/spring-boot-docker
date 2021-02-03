@@ -39,7 +39,7 @@ phases:
       - docker tag $TAG_NAME $TAG_NAME
   post_build:
     commands:
-      #- docker tag $REPOSITORY_URI:$ARTIFACT $REPOSITORY_URI:$$ARTIFACT 
+      #- docker tag $REPOSITORY_URI:$ARTIFACT $REPOSITORY_URI:$$ARTIFACT  
        #- $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
        - $(aws ecr get-login-password --region us-east-1) 
        - echo Build completed on `date`
