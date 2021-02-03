@@ -4,7 +4,7 @@ phases:
   install:
     commands:
      # variables
-      - REPOSITORY_URI=507659646206.dkr.ecr.us-east-1.amazonaws.com/repository-uzm9ifkrpo64
+      - REPOSITORY_URI=507659646206.dkr.ecr.us-east-1.amazonaws.com/ecs-example-repository
       - ARTIFACT=spring-boot
       - ARTIFACT_TYPE=.jar 
       - TAG_NAME=$REPOSITORY_URI:$ARTIFACT
