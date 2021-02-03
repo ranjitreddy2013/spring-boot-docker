@@ -53,4 +53,4 @@ phases:
 artifacts:
      files:
       - imagedefinitions.json  
-      - target/spring-boot.jar
+      - target/spring-boot-db-1.0-SNAPSHOT.jar
