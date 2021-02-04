@@ -9,9 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 
-/**
- * @author UNGERW
- */
+
 @Component
 @Path("/spring-docker/")
 public class HelloWorldService {
@@ -19,7 +17,7 @@ public class HelloWorldService {
   @GET
   @Path("/hello")
   public Response test() {
-    return Response.status(200).entity("Rest Enpoint , Date 10.05.2019 - HELLO AWS Friends - V1.2").build();
+    return Response.status(200).entity("Rest Enpoint , Date 10.05.2019 - HELLO AWS Friends - V1.3").build();
   }
 
 }
