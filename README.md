@@ -16,7 +16,7 @@ docker run -d -p 8080:8080 0169......dkr.ecr.us-west-1.amazonaws.com/ecs-example
 
 aws configure
 
-
+  
 $(aws ecr get-login --no-include-email --region us-west-1)
 
  docker push 0169......dkr.ecr.us-west-1.amazonaws.com/ecs-example-repository:spring-boot
