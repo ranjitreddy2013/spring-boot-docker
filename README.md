@@ -2,7 +2,7 @@ http://localhost:8080/spring-docker/hello
 with docker for windows
 http://10.0.75.1:8080/spring-docker/hello  
   
-  
+    
 docker build -f src/main/docker/Dockerfile -t $TAG_NAME .    
 docker build -f src/main/docker/Dockerfile -t spring-boot .    
 docker build -f src/main/docker/Dockerfile -t 0169...../ecs-example-repository:spring-boot .
