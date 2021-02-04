@@ -4,7 +4,7 @@ phases:
   install:
     commands:
      # variables
-      - REPOSITORY_URI=016973021151.dkr.ecr.us-west-1.amazonaws.com/ecs-example-repository
+      - REPOSITORY_URI=507659646206.dkr.ecr.us-east-1.amazonaws.com/ecs-example-repository
       - ARTIFACT=spring-boot
       - ARTIFACT_TYPE=.jar 
       - TAG_NAME=$REPOSITORY_URI:$ARTIFACT
@@ -14,6 +14,7 @@ phases:
       - echo $REPOSITORY_URI
       - echo $TAG_NAME  
       # installation
+      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
       - apt-get update -y
       - apt-get install -y software-properties-common
       - add-apt-repository ppa:openjdk-r/ppa
@@ -24,7 +25,8 @@ phases:
 
   pre_build:
     commands:
-
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 507659646206.dkr.ecr.us-east-1.amazonaws.com
   build:
     commands:
       - echo Maven Build ...
@@ -32,23 +34,24 @@ phases:
       #- echo Gradle Build
       #- chmod +x gradlew
       #- ./gradlew build
-      #- gradle build 
-      
+      #- gradle build   
       - echo Building the Docker image...  
       - docker build -f src/main/docker/Dockerfile -t $TAG_NAME .
       - docker tag $TAG_NAME $TAG_NAME
   post_build:
     commands:
-      #- docker tag $REPOSITORY_URI:$ARTIFACT $REPOSITORY_URI:$$ARTIFACT
+      #- docker tag $REPOSITORY_URI:$ARTIFACT $REPOSITORY_URI:$$ARTIFACT    
        #- $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-       - $(aws ecr get-login --region us-west-1 --no-include-email) 
+       # - $(aws ecr get-login-password --region us-east-1)  
+       # - $(aws ecr get-login-password --region us-east-1
+       
        - echo Build completed on `date`
        - echo Pushing the Docker images...
        - docker push $TAG_NAME
-       #- aws ecs list-services --cluster UngerwECS
+       #- aws ecs list-services --cluster UngerwECS 
        #- aws ecs update-service --cluster UngerwECS --service SpringBootService-Service-XBO2INJQRTEO --task-definition UngerwSpringBootTD
        
 artifacts:
      files:
       - imagedefinitions.json  
-      - target/spring-boot.jar
+      - target/spring-boot-db-1.0-SNAPSHOT.jar
