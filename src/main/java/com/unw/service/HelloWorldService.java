@@ -17,7 +17,7 @@ public class HelloWorldService {
   @GET
   @Path("/hello")
   public Response test() {
-    return Response.status(200).entity("Rest Enpoint , Date 02.08.2019 - HELLO AWS Friends - V1.5").build();
+    return Response.status(200).entity("Rest Enpoint, Date 02.08.2019 - HELLO AWS Friends - V1.5").build();
   }
 
 }
